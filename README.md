@@ -69,7 +69,7 @@ Deploy the model to an IBM Cloud deployment space.
 import requests
 import json
 
-# Get authentication token
+
 API_KEY = "<your IBM Cloud API key>"
 token_response = requests.post(
     'https://iam.cloud.ibm.com/identity/token',
@@ -77,13 +77,13 @@ token_response = requests.post(
 )
 mltoken = token_response.json()["access_token"]
 
-# Prepare headers
+
 headers = {
     'Content-Type': 'application/json',
     'Authorization': 'Bearer ' + mltoken
 }
 
-# Define input payload
+
 payload_scoring = {
     "input_data": [
         {
@@ -93,7 +93,7 @@ payload_scoring = {
     ]
 }
 
-# Send scoring request
+
 response_scoring = requests.post(
     'https://private.eu-gb.ml.cloud.ibm.com/ml/v4/deployments/<deployment-id>/predictions?version=2021-05-01',
     json=payload_scoring,
